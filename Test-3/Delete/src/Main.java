@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        int[] arr = {10, 4, 6, 7, 8, 6, 0, 0, 0};
+        int[] arr = {10, 4, 6, 6, 8, 6, 8, 9, 10};
         int input;
 
         Scanner scanner = new Scanner(System.in);
@@ -28,13 +28,13 @@ public class Main {
 
     static int [] del(int[] arr,int input) {
         for (int i = 0; i < arr.length; i++) {
-            if (input == arr[i]) {
-                for (int j = arr[i];j<arr.length-1;j++) {
+            while (input == arr[i]) {
+                for (int j = i;j<arr.length-1;j++) {
                     arr[j] = arr[j+1];
                 }
+                arr[arr.length-1] = 0;
             }
         }
-        arr[arr.length-1] = 0;
         return arr;
     }
 }
