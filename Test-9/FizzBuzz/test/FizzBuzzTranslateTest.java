@@ -15,4 +15,15 @@ class FizzBuzzTranslateTest {
 
         assertEquals (result, expected);
     }
+
+    @Test
+    @DisplayName("Testing 26")
+    void checkNumber26() {
+        int input=26;
+        String expected="hai sau";
+
+        String result = FizzBuzzTranslate.checkNumber(input);
+
+        assertEquals (result, expected);
+    }
 }
