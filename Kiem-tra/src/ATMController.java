@@ -59,11 +59,11 @@ public class ATMController extends User {
         else {
             for (int i = list.size()-1; i>=0; i--) {
                 if (count ==3) return;
-                if (list.get(i) == "D") {
+                if (list.get(i).equals("D")) {
                     System.out.println("Nap tien: " + listMoney.get(i));
                     count++;
                 }
-                if (list.get(i) == "W") {
+                if (list.get(i).equals("W")) {
                     System.out.println("Rut tien: " + listMoney.get(i));
                     count++;
                 }
