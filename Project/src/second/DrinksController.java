@@ -5,20 +5,25 @@ import service.InputScanner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static second.Controller.inputDrinks;
-
 public class DrinksController {
-    public static List<Drinks> drinksList = new ArrayList<>();
+    private static final List<Drinks> drinksList = new ArrayList<>();
 
     public static void addDrinks() {
         System.out.print("Name: ");
-        String name = InputScanner.scanner.nextLine();
+        String name = InputScanner.getString();
         System.out.print("Type: ");
-        String type = InputScanner.scanner.nextLine();
+        String type = InputScanner.getString();
         System.out.println("Price: ");
-        double price=InputScanner.scanner.nextDouble();
-        InputScanner.scanner.nextLine();
+        double price=InputScanner.getDouble();
         Drinks drinks = new Drinks(name,type,price);
         drinksList.add(drinks);
+    }
+
+    public static int getDrinksListSize() {
+        return drinksList.size();
+    }
+
+    public static Drinks getDrinks(int i) {
+        return drinksList.get(i);
     }
 }

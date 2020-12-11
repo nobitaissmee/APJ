@@ -12,11 +12,11 @@ public class Controller {
             System.out.println("1. Order Drinks");
             System.out.println("2. Add Drinks");
             System.out.println("0. Cancel");
-            choose = InputScanner.scanner.nextInt();
+            choose = InputScanner.getInt();
             switch (choose) {
                 case 1:
-                    for (int i = 0; i < DrinksController.drinksList.size(); i++) {
-                        System.out.println(DrinksController.drinksList.get(i));
+                    for (int i = 0; i < DrinksController.getDrinksListSize(); i++) {
+                        System.out.println(DrinksController.getDrinks(i));
                     }
                     break;
                 case 2:
@@ -25,19 +25,16 @@ public class Controller {
                 case 0:
                     System.out.println("Thanks you");
                     break;
-                default:
-                    break;
             }
         }
     }
 
     public static void inputDrinks() {
-        int input =1;
+        int input = -1;
         while (input != 0) {
-        System.out.println("1. Add");
-        System.out.println("0. Cancel");
-         input = InputScanner.scanner.nextInt();
-        InputScanner.scanner.nextLine();
+            System.out.println("1. Add");
+            System.out.println("0. Cancel");
+            input = InputScanner.getInt();
 
             switch (input) {
                 case 1:
@@ -45,15 +42,8 @@ public class Controller {
                     break;
                 case 0:
                     menu();
-                default:
-                    break;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.menu();
     }
 }
 

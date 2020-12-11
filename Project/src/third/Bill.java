@@ -11,7 +11,7 @@ public class Bill {
     private String timeIn;
     private String timeOut;
     private String table;
-    private List<BillDetail> details = new ArrayList<>();
+    private final List<BillDetail> details = new ArrayList<>();
 
     public Bill(String nameStaff, String date, String timeIn, String timeOut, String table) {
         this.nameStaff = nameStaff;
@@ -19,7 +19,6 @@ public class Bill {
         this.timeIn = timeIn;
         this.timeOut = timeOut;
         this.table = table;
-        this.details = details;
     }
 
     public String getNameStaff() {

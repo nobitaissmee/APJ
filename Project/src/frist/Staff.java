@@ -1,10 +1,12 @@
 package frist;
-import java.util.Scanner;
+import service.InputScanner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Staff {
     private int id;
     private String name,phoneNumber,dateOfBirth,address;
-    Scanner scanner = new Scanner(System.in);
 
     public Staff(){
     }
@@ -57,18 +59,21 @@ public class Staff {
         this.id = id;
     }
 
+    public static List<Staff> staffs = new ArrayList<>();
+
     public void inputStaff(){
-        System.out.print("Id:");
-        id=scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Name:");
-        name=scanner.nextLine();
-        System.out.print("DatOfBirth:");
-        dateOfBirth=scanner.nextLine();
-        System.out.print("PhoneNumber:");
-        phoneNumber=scanner.nextLine();
-        System.out.print("Address:");
-        address=scanner.nextLine();
+        System.out.print("Id: ");
+        id= InputScanner.getInt();
+        System.out.print("Name: ");
+        name=InputScanner.getString();
+        System.out.print("DatOfBirth: ");
+        dateOfBirth=InputScanner.getString();
+        System.out.print("PhoneNumber: ");
+        phoneNumber=InputScanner.getString();
+        System.out.print("Address: ");
+        address=InputScanner.getString();
+        Staff staff= new Staff(id,name,dateOfBirth,phoneNumber,address);
+        staffs.add(staff);
     }
 
     @Override
