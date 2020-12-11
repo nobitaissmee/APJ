@@ -38,7 +38,7 @@ public class ATMController extends User {
             System.out.println("Bam nut theo menu de tiep tuc giao dich");
             System.out.println("=======================");
         }else {
-            listMoney.add(outMoney);
+            listMoney.add(-outMoney);
             System.out.println("Giao dich thanh cong. Ban vua rut" + outMoney + "thanh cong.");
             moneyUserAfterOut(outMoney);
             System.out.println("So du tai khoan khach hang la: " + getMoney());

@@ -13,7 +13,7 @@ public class Main {
 
         System.out.println("Ngan hang ABC kinh chao Quy khach " + user.getName());
         String choice = "P";
-        while (choice != "X") {
+        while (!choice.equals("X")) {
             System.out.println("Menu:");
             System.out.println("1. Nhan phim A de kiem tra tai khoan\n" +
                     "2. Nhan phim D de nap tien\n" +
