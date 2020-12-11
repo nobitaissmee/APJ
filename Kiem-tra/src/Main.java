@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        User user = new User("Nguyen Van A", 23000);
-        ATMController atm = new ATMController("Nguyen Van A", 23000);
+        User user =new User("Nguyen Van A",23000);
+        ATMController atm = new ATMController();
         ArrayList<String> list = new ArrayList<>();
         ArrayList<Integer> listMoney = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
