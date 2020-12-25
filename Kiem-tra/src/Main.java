@@ -3,43 +3,41 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        User user =new User("Nguyen Van A",23000);
-        ATMController atm = new ATMController();
-        ArrayList<String> list = new ArrayList<>();
-        ArrayList<Integer> listMoney = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
+        public static final String CHECK_BALANCE = "A";
+        public static final String DEPOSIT_MONEY = "D";
+        public static final String WITHDRAW_MONEY = "W";
+        public static final String HISTORY = "H";
+        public static final String EXIT = "X";
 
-        System.out.println("Ngan hang ABC kinh chao Quy khach " + user.getName());
-        String choice = "P";
-        while (!choice.equals("X")) {
-            System.out.println("Menu:");
-            System.out.println("1. Nhan phim A de kiem tra tai khoan\n" +
-                    "2. Nhan phim D de nap tien\n" +
-                    "3. Nhan phim W de rut tien\n" +
-                    "4. Nhan phim H de xem lich su 3 lan \n" +
-                    "5. Nhan phim X de thoat \n");
-            System.out.println("===============");
-            System.out.println("Nhap lua chon cua ban: ");
-            choice = scanner.nextLine().toUpperCase();
-            switch (choice) {
-                case "A":
-                    atm.checkBank();
-                    break;
-                case "D":
-                    list.add(choice);
-                    atm.inputMoney(listMoney);
-                    break;
-                case "W":
-                    list.add(choice);
-                    atm.outMoney(listMoney);
-                    break;
-                case "H":
-                    atm.showHistory(list,listMoney);
-                    break;
-                case "X":
-                    atm.goodBye();
+        public static void main(String[] args) {
+            User user =new User("Nguyen Van A",23000);
+            ATMMachine atm = new ATMMachine();
+            ArrayList<String> list = new ArrayList<>();
+            ArrayList<Integer> listMoney = new ArrayList<>();
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Ngan hang ABC kinh chao Quy khach " + user.getName());
+            while (true) {
+                String choice = atm.getMenuOption();
+                switch (choice) {
+                    case CHECK_BALANCE -> atm.checkAccountBalance();
+                    case DEPOSIT_MONEY -> {
+                        list.add(choice);
+                        atm.depositMoney(listMoney);
+                    }
+                    case WITHDRAW_MONEY -> atm.withdrawMoney(listMoney, choice, list);
+                    case HISTORY -> atm.showHistory(list, listMoney);
+                    case EXIT -> {
+                        atm.goodBye();
+                        return;
+                    }
+                }
+                printNextActionMessage();
             }
         }
-    }
+
+        private static void printNextActionMessage() {
+            System.out.println("Bam nut theo menu de tiep tuc giao dich");
+            System.out.println("=======================");
+        }
     }
