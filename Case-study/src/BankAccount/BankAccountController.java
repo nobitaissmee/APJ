@@ -131,7 +131,7 @@ public class BankAccountController {
         }
     }
 
-    public static void saveAccountToFile() {
+    public void saveAccountToFile() {
         try {
             SerializationUtils.serialize(bankAccountList, ACCOUNT_FILE);
         } catch (IOException e) {

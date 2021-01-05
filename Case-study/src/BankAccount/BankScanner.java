@@ -9,9 +9,9 @@ public class BankScanner {
 
     public void handleAddBankAccount() {
         System.out.println("Write your first name: ");
-        String firstName = bankFormat.getLine();
+        String firstName = bankFormat.getName();
         System.out.println("Write your last name: ");
-        String lastName = bankFormat.getLine();
+        String lastName = bankFormat.getName();
         System.out.println("Write your gender: ");
         String gender = bankFormat.getFormatGender();
         System.out.println("Write your dayOfBirth: ");

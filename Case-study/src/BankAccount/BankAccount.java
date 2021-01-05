@@ -20,7 +20,7 @@ public class BankAccount implements Serializable {
     public BankAccount(int id, Information information, double balance) {
         this.id = id;
         this.information = information;
-        this.accountNumber = BankFormat.ramdomBankNumber();
+        this.accountNumber = BankFormat.bankNumber();
         this.balance = balance;
     }
 

@@ -7,7 +7,7 @@ public class StateBank {
     StateBankScanner stateBankScanner = new StateBankScanner();
     BankScanner bankScanner = new BankScanner();
     BankAccountController bankAccountController = new BankAccountController();
-    BankFormat bankFormat=new BankFormat();
+    BankFormat bankFormat = new BankFormat();
 
 
     static String totalMenu = "1. Log in\n" +
@@ -20,9 +20,16 @@ public class StateBank {
             "4. Transaction history\n" +
             "0. Exit\n";
 
+    static String adminMenu = "1. Display All Bank Accounts\n" +
+            "2. Search For A Bank Account\n" +
+            "3. Edit Bank Account\n" +
+            "4. Remove Bank Account\n" +
+            "0. Exit\n";
+
     private BankAccount bankAccountActive = null;
     private boolean totalRunningMenu = true;
     private boolean accountRunningMenu = false;
+    private boolean adminRunningMenu=true;
 
     public void printTotalMenu() {
         while (totalRunningMenu) {
@@ -51,7 +58,18 @@ public class StateBank {
             System.out.println("Your account is currently unavailable");
         } else {
             System.out.println("Login is complete.Wish you happy using the service!");
-            printAccountMenu(bankAccountActive);
+            if (bankAccountActive.getAccountNumber().equals("000000000")) {
+                printAdminMenu();
+            }else {
+                printAccountMenu(bankAccountActive);
+            }
+        }
+    }
+
+    public void printAdminMenu(){
+        while(adminRunningMenu){
+            int optionAdminMenu=stateBankScanner.getOptionAdminMenu(adminMenu,4);
+            handleGetAdminMenuOption(optionAdminMenu);
         }
     }
 
@@ -59,6 +77,17 @@ public class StateBank {
         while (accountRunningMenu) {
             int optionAccountMenu = stateBankScanner.getOptionAccountMenu(accountMenu, 4);
             handleGetAccountMenuOption(optionAccountMenu, bankAccountActive);
+        }
+    }
+
+    public void handleGetAdminMenuOption(int optionAdminMenu){
+        switch (optionAdminMenu){
+            case 1:
+                bankAccountController.showAllBankAccountList();
+            case 2:
+                bankScanner.showBankAccountByAccountNumber();
+            case 4:
+                bankScanner.handleRemoveAccountByAccountNumber();
         }
     }
 

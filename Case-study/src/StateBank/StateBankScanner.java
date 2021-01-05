@@ -1,12 +1,13 @@
 package StateBank;
 
 import BankAccount.*;
+
 import java.util.Scanner;
 
 public class StateBankScanner {
     static Scanner sc = new Scanner(System.in);
-    BankFormat bankFormat =new BankFormat();
-    BankAccountController bankAccountController=new BankAccountController();
+    BankFormat bankFormat = new BankFormat();
+    BankAccountController bankAccountController = new BankAccountController();
 
     public int getOptionTotalMenu(String messageTotalMenu, int limitTotalMenu) {
         int optionTotalMenu;
@@ -44,6 +45,17 @@ public class StateBankScanner {
         System.out.print("Your Account: ");
         String accountInput = bankFormat.getFormatAccountNumber();
         return bankAccountController.getBankAccountByAccountNumber(accountInput);
+    }
+
+    public int getOptionAdminMenu(String messageAdminMenu, int limitAdminMenu) {
+        int optionAdminMenu;
+        do {
+            System.out.print("----------User Menu----------\n");
+            System.out.println(messageAdminMenu);
+            System.out.println("---------Your choice---------");
+            optionAdminMenu = getAndParseInteger();
+        } while (optionAdminMenu < 0 || optionAdminMenu > limitAdminMenu);
+        return optionAdminMenu;
     }
 
     public void exitMachine() {
