@@ -36,8 +36,7 @@ public class StudentController {
     }
 
     public ArrayList<Student> returnListStudent(){
-        if(!checkStudentList()) return studentList;
-        return null;
+        return studentList;
     }
 
     public void addStudentToList(String fullName, String gender, String dayOfBirth) {

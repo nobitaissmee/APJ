@@ -26,7 +26,7 @@ public class StudentScanner {
             System.out.format("%-8s |", student.getPoint().getPoint2() != -1 ? student.getPoint().getPoint2() : "");
             System.out.format("%-8s |", student.getPoint().getPoint3() != -1 ? student.getPoint().getPoint3() : "");
             System.out.format("%-8s |", student.getPoint().getPoint4() != -1 ? student.getPoint().getPoint4() : "");
-            System.out.format((!student.checkGPA()?"%-8.2f |":"%-8s |"),(!student.checkGPA()?student.getPoint().getGPA():""));
+            System.out.format((!student.checkGPA() ? "%-8.2f |" : "%-8s |"), (!student.checkGPA() ? student.getPoint().getGPA() : ""));
             System.out.println();
         }
     }
@@ -115,7 +115,7 @@ public class StudentScanner {
         if (studentInput.getPoint().getPoint1() != -1) {
             System.out.println("Point has been set!");
         } else {
-            double score1Input = studentFormat.getPoint("Input your score want to set up:");
+            double score1Input = studentFormat.getPoint("Input your point want to set up:");
             studentController.inputScore1Student(studentInput, score1Input);
         }
     }
@@ -124,7 +124,7 @@ public class StudentScanner {
         if (studentInput.getPoint().getPoint2() != -1) {
             System.out.println("Point has been set!");
         } else {
-            double score2Input = studentFormat.getPoint("Input your score want to set up:");
+            double score2Input = studentFormat.getPoint("Input your point want to set up:");
             studentController.inputScore2Student(studentInput, score2Input);
         }
     }
@@ -133,7 +133,7 @@ public class StudentScanner {
         if (studentInput.getPoint().getPoint3() != -1) {
             System.out.println("Point has been set!");
         } else {
-            double score3Input = studentFormat.getPoint("Input your score want to set up:");
+            double score3Input = studentFormat.getPoint("Input your point want to set up:");
             studentController.inputScore1Student(studentInput, score3Input);
         }
     }
@@ -142,7 +142,7 @@ public class StudentScanner {
         if (studentInput.getPoint().getPoint4() != -1) {
             System.out.println("Point has been set!");
         } else {
-            double score4Input = studentFormat.getPoint("Input your score want to set up:");
+            double score4Input = studentFormat.getPoint("Input your point want to set up:");
             studentController.inputScore1Student(studentInput, score4Input);
         }
     }
@@ -151,7 +151,7 @@ public class StudentScanner {
         if (studentEdit.getPoint().getPoint1() == -1) {
             System.out.println("Point not set up!");
         } else {
-            double score1Edit = studentFormat.getPoint("Input your score want to replace:");
+            double score1Edit = studentFormat.getPoint("Input your point want to replace:");
             studentController.inputScore1Student(studentEdit, score1Edit);
         }
     }
@@ -160,7 +160,7 @@ public class StudentScanner {
         if (studentEdit.getPoint().getPoint2() == -1) {
             System.out.println("Point not set up!");
         } else {
-            double score2Edit = studentFormat.getPoint("Input your score want to replace:");
+            double score2Edit = studentFormat.getPoint("Input your point want to replace:");
             studentController.inputScore2Student(studentEdit, score2Edit);
         }
     }
@@ -169,7 +169,7 @@ public class StudentScanner {
         if (studentEdit.getPoint().getPoint3() == -1) {
             System.out.println("Point not set up!");
         } else {
-            double score3Edit = studentFormat.getPoint("Input your score want to replace:");
+            double score3Edit = studentFormat.getPoint("Input your point want to replace:");
             studentController.inputScore3Student(studentEdit, score3Edit);
         }
     }
@@ -178,56 +178,96 @@ public class StudentScanner {
         if (studentEdit.getPoint().getPoint4() == -1) {
             System.out.println("Point not set up!");
         } else {
-            double score4Edit = studentFormat.getPoint("Input your score want to replace:");
+            double score4Edit = studentFormat.getPoint("Input your point want to replace:");
             studentController.inputScore4Student(studentEdit, score4Edit);
         }
     }
 
-    public ArrayList<Student> getListToInputAllScore1(){
-        ArrayList<Student> studentList=studentController.returnListStudent();
+    public ArrayList<Student> getListToInputAllScore() {
+        ArrayList<Student> studentList = studentController.returnListStudent();
         return studentList;
     }
 
-    public void handleAddAllScore1(ArrayList<Student> studentList){
-        for(Student student:studentList){
-            if (student.getPoint().getPoint1()==-1){
+    public void handleInputAllScore1(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint1() != -1) {
                 System.out.println("Point has been set!");
-            }else {
-                double scoreInput=studentFormat.getPoint("Input your score want to set up for" +student.getFullName()+":");
-                studentController.inputScore1Student(student,scoreInput);
+            } else {
+                double scoreInput = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + ":");
+                studentController.inputScore1Student(student, scoreInput);
             }
         }
     }
 
-    public void handleAddAllScore2(ArrayList<Student> studentList){
-        for(Student student:studentList){
-            if (student.getPoint().getPoint2()==-1){
+    public void handleInputAllScore2(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint2() != -1) {
                 System.out.println("Point has been set!");
-            }else {
-                double scoreInput=studentFormat.getPoint("Input your score want to set up for" +student.getFullName()+":");
-                studentController.inputScore2Student(student,scoreInput);
+            } else {
+                double scoreInput = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + ":");
+                studentController.inputScore2Student(student, scoreInput);
             }
         }
     }
 
-    public void handleAddAllScore3(ArrayList<Student> studentList){
-        for(Student student:studentList){
-            if (student.getPoint().getPoint3()==-1){
+    public void handleInputAllScore3(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint3() != -1) {
                 System.out.println("Point has been set!");
-            }else {
-                double scoreInput=studentFormat.getPoint("Input your score want to set up for" +student.getFullName()+":");
-                studentController.inputScore3Student(student,scoreInput);
+            } else {
+                double scoreInput = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + ":");
+                studentController.inputScore3Student(student, scoreInput);
             }
         }
     }
 
-    public void handleAddAllScore4(ArrayList<Student> studentList){
-        for(Student student:studentList){
-            if (student.getPoint().getPoint4()==-1){
+    public void handleInputAllScore4(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint4() != -1) {
                 System.out.println("Point has been set!");
-            }else {
-                double scoreInput=studentFormat.getPoint("Input your score want to set up for" +student.getFullName()+":");
-                studentController.inputScore4Student(student,scoreInput);
+            } else {
+                double scoreInput = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + " :");
+                studentController.inputScore4Student(student, scoreInput);
+            }
+        }
+    }
+
+    public void handleEditAllScore1(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint1() == -1) {
+                System.out.println("Point not set up!");
+            } else {
+                double scoreEdit = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + " :");
+            }
+        }
+    }
+
+    public void handleEditAllScore2(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint2() == -1) {
+                System.out.println("Point not set up!");
+            } else {
+                double scoreEdit = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + " :");
+            }
+        }
+    }
+
+    public void handleEditAllScore3(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint3() == -1) {
+                System.out.println("Point not set up!");
+            } else {
+                double scoreEdit = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + " :");
+            }
+        }
+    }
+
+    public void handleEditAllScore4(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (student.getPoint().getPoint4() == -1) {
+                System.out.println("Point not set up!");
+            } else {
+                double scoreEdit = studentFormat.getPoint("Input your point want to set up for " + student.getFullName() + " :");
             }
         }
     }
