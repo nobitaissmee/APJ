@@ -46,7 +46,7 @@ public class Point {
     }
 
     public double getGPA() {
-        return GPA;
+        return (point1 + point2 + point3 * 2 + point4 * 3) / 7;
     }
 
     @Override

@@ -12,6 +12,7 @@ public class StudentManager {
             "6. Input All Score\n" +
             "7. Edit Score\n" +
             "8. Edit All Score\n" +
+            "9. Sort The List(Up To Down)\n" +
             "0. Exit\n";
 
     String editMenu = "1. Edit Name\n" +
@@ -56,7 +57,7 @@ public class StudentManager {
 
     public void printTotalMenu() {
         while (isRunningTotal) {
-            int optionTotalMenu = studentManagerScanner.getOptionMenu(totalMenu, 8,"----------Menu----------\n");
+            int optionTotalMenu = studentManagerScanner.getOptionMenu(totalMenu, 9,"----------Menu----------\n");
             handleGetTotalMenu(optionTotalMenu);
         }
     }
@@ -90,6 +91,9 @@ public class StudentManager {
                 isRunningEditAllScore=true;
                 studentListPrivate =studentScanner.getListToInputAllScore();
                 checkStudentPrivateAndPrintEditAllScoreMenu(studentListPrivate);
+            }
+            case 9 ->{
+                studentScanner.handleSortList();
             }
             case 0 -> isRunningTotal = false;
         }

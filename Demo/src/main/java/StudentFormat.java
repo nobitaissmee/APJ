@@ -45,10 +45,26 @@ public class StudentFormat {
         System.out.println("Format DOB (yyyy-mm-dd): ");
         try {
             Date date = Date.valueOf(sc.nextLine());
-            return date.toString();
+            String dateInput = date.toString();
+            String dateCurrent = getCurrentDate();
+            if (checkDate(dateInput, dateCurrent)) {
+                System.out.println("The date is too present!\nTry it!");
+                return getFormatDOB(message);
+            }
+            return dateInput;
         } catch (Exception e) {
             return getFormatDOB(message);
         }
+    }
+
+    public String getCurrentDate() {
+        long millis = System.currentTimeMillis();
+        java.sql.Date dateCurrent = new java.sql.Date(millis);
+        return dateCurrent.toString();
+    }
+
+    public boolean checkDate(String dateInput, String dateCurrent) {
+        return dateInput.compareTo(dateCurrent) >= 0;
     }
 
     public String getNameEdit(String message) {
@@ -86,5 +102,10 @@ public class StudentFormat {
                 System.out.println(e.getMessage() + ". Nhap lai:");
             }
         } while (true);
+    }
+
+    public static void main(String[] args) {
+        StudentFormat studentFormat=new StudentFormat();
+        System.out.println(studentFormat.getFormatDOB("Write!"));
     }
 }
