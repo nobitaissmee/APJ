@@ -29,7 +29,7 @@ public class BankFormat {
         int number = new Random().nextInt(999999999);
         String numberString = String.format("%09d", number);
         for (String numberOfList : numberList) {
-            if (numberString.equals(numberOfList)) {
+            if (numberString.equals(numberOfList) || numberString.equals("000000000")) {
                 return bankNumber();
             }
         }

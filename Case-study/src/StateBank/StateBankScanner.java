@@ -9,10 +9,10 @@ public class StateBankScanner {
     BankFormat bankFormat = new BankFormat();
     BankAccountController bankAccountController = new BankAccountController();
 
-    public int getOptionTotalMenu(String messageTotalMenu, int limitTotalMenu) {
+    public int getOptionMenu(String messageTotalMenu, int limitTotalMenu, String title) {
         int optionTotalMenu;
         do {
-            System.out.print("----------Menu----------\n");
+            System.out.print(title);
             System.out.println(messageTotalMenu);
             System.out.println("-------Your choice-------");
             optionTotalMenu = getAndParseInteger();
@@ -29,33 +29,11 @@ public class StateBankScanner {
         }
     }
 
-    public int getOptionAccountMenu(String messageAccountMenu, int limitAccountMenu) {
-        int optionAccountMenu;
-        do {
-            System.out.print("----------User Menu----------\n");
-            System.out.println(messageAccountMenu);
-            System.out.println("---------Your choice---------");
-            optionAccountMenu = getAndParseInteger();
-        } while (optionAccountMenu < 0 || optionAccountMenu > limitAccountMenu);
-        return optionAccountMenu;
-    }
-
     public BankAccount getAccountToLogIn() {
         System.out.println("----------Log In----------");
         System.out.print("Your Account: ");
         String accountInput = bankFormat.getFormatAccountNumber();
         return bankAccountController.getBankAccountByAccountNumber(accountInput);
-    }
-
-    public int getOptionAdminMenu(String messageAdminMenu, int limitAdminMenu) {
-        int optionAdminMenu;
-        do {
-            System.out.print("----------User Menu----------\n");
-            System.out.println(messageAdminMenu);
-            System.out.println("---------Your choice---------");
-            optionAdminMenu = getAndParseInteger();
-        } while (optionAdminMenu < 0 || optionAdminMenu > limitAdminMenu);
-        return optionAdminMenu;
     }
 
     public void exitMachine() {

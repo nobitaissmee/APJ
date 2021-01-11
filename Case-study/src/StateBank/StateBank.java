@@ -9,7 +9,6 @@ public class StateBank {
     BankAccountController bankAccountController = new BankAccountController();
     BankFormat bankFormat = new BankFormat();
 
-
     static String totalMenu = "1. Log in\n" +
             "2. Registration\n" +
             "0. Exit\n";
@@ -29,11 +28,11 @@ public class StateBank {
     private BankAccount bankAccountActive = null;
     private boolean totalRunningMenu = true;
     private boolean accountRunningMenu = false;
-    private boolean adminRunningMenu=true;
+    private boolean adminRunningMenu = true;
 
     public void printTotalMenu() {
         while (totalRunningMenu) {
-            int optionTotalMenu = stateBankScanner.getOptionTotalMenu(totalMenu, 2);
+            int optionTotalMenu = stateBankScanner.getOptionMenu(totalMenu, 2,"----------Menu----------\n" );
             handleGetTotalMenuOption(optionTotalMenu);
         }
     }
@@ -58,30 +57,26 @@ public class StateBank {
             System.out.println("Your account is currently unavailable");
         } else {
             System.out.println("Login is complete.Wish you happy using the service!");
-            if (bankAccountActive.getAccountNumber().equals("000000000")) {
-                printAdminMenu();
-            }else {
-                printAccountMenu(bankAccountActive);
-            }
+            printAccountMenu(bankAccountActive);
         }
     }
 
-    public void printAdminMenu(){
-        while(adminRunningMenu){
-            int optionAdminMenu=stateBankScanner.getOptionAdminMenu(adminMenu,4);
+    public void printAdminMenu() {
+        while (adminRunningMenu) {
+            int optionAdminMenu = stateBankScanner.getOptionMenu(adminMenu, 4,"----------Admin Menu----------\n");
             handleGetAdminMenuOption(optionAdminMenu);
         }
     }
 
     public void printAccountMenu(BankAccount bankAccountActive) {
         while (accountRunningMenu) {
-            int optionAccountMenu = stateBankScanner.getOptionAccountMenu(accountMenu, 4);
+            int optionAccountMenu = stateBankScanner.getOptionMenu(accountMenu, 4,"----------User Menu----------\n");
             handleGetAccountMenuOption(optionAccountMenu, bankAccountActive);
         }
     }
 
-    public void handleGetAdminMenuOption(int optionAdminMenu){
-        switch (optionAdminMenu){
+    public void handleGetAdminMenuOption(int optionAdminMenu) {
+        switch (optionAdminMenu) {
             case 1:
                 bankAccountController.showAllBankAccountList();
             case 2:
