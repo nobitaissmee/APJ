@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class StudentController {
     private static final String FILE_STUDENT = "student.json";
@@ -52,11 +51,11 @@ public class StudentController {
         System.out.format("%-" + length + "s |", student.getFullName());
         System.out.format("%-13s |", student.getDayOfBirth());
         System.out.format("%-8s |", student.getGender());
-        System.out.format(student.getPoint().getPoint1() != -1 ? "-8.2f |" : "%-8s |", student.getPoint().getPoint1() != -1 ? student.getPoint().getPoint1() : "");
-        System.out.format(student.getPoint().getPoint2() != -1 ? "-8.2f |" : "%-8s |", student.getPoint().getPoint2() != -1 ? student.getPoint().getPoint2() : "");
-        System.out.format(student.getPoint().getPoint3() != -1 ? "-8.2f |" : "%-8s |", student.getPoint().getPoint3() != -1 ? student.getPoint().getPoint3() : "");
-        System.out.format(student.getPoint().getPoint4() != -1 ? "-8.2f |" : "%-8s |", student.getPoint().getPoint4() != -1 ? student.getPoint().getPoint4() : "");
-        System.out.format((!student.checkGPA() ? "%-8.2f |" : "%-8s |"), (!student.checkGPA() ? student.getPoint().getGPA() : ""));
+        System.out.format(student.getPoint().getPoint1() != -1 ? "  %-6.2f |" : "%-8s |", student.getPoint().getPoint1() != -1 ? student.getPoint().getPoint1() : "");
+        System.out.format(student.getPoint().getPoint2() != -1 ? "  %-6.2f |" : "%-8s |", student.getPoint().getPoint2() != -1 ? student.getPoint().getPoint2() : "");
+        System.out.format(student.getPoint().getPoint3() != -1 ? "  %-6.2f |" : "%-8s |", student.getPoint().getPoint3() != -1 ? student.getPoint().getPoint3() : "");
+        System.out.format(student.getPoint().getPoint4() != -1 ? "  %-6.2f |" : "%-8s |", student.getPoint().getPoint4() != -1 ? student.getPoint().getPoint4() : "");
+        System.out.format(student.getPoint().getGPA() != -1 ? "  %-6.2f |" : "%-8s |", student.getPoint().getGPA() != -1 ? student.getPoint().getGPA() : "");
         System.out.println();
     }
 
@@ -74,7 +73,7 @@ public class StudentController {
         System.out.println("-----Done-----");
     }
 
-    public void showAllStudentList() {
+    public void showAllStudentList(ArrayList<Student> studentList) {
         if (checkStudentList()) {
             System.out.println("There are no students in the list!");
         } else {
@@ -180,8 +179,25 @@ public class StudentController {
     }
 
     public void sortList(ArrayList<Student> studentList) {
-        studentList.sort((o1, o2) -> o1.getPoint().getGPA() < o2.getPoint().getGPA() ? 1 : -1);
+        studentList.sort((o1, o2) -> Double.compare(o2.getPoint().getGPA(), o1.getPoint().getGPA()));
         System.out.println("-----Done-----");
+    }
+
+    public void checkPointAllStudent(ArrayList<Student> studentList){
+        for(Student student:studentList){
+            if (student.getPoint().getPoint1()==-1){
+                System.out.println("Point 1 of "+ student.getFullName()+" not has set up!");
+            }
+            if (student.getPoint().getPoint2()==-1){
+                System.out.println("Point 2 of "+ student.getFullName()+" not has set up!");
+            }
+            if (student.getPoint().getPoint3()==-1){
+                System.out.println("Point 3 of "+ student.getFullName()+" not has set up!");
+            }
+            if (student.getPoint().getPoint4()==-1){
+                System.out.println("Point 4 of "+ student.getFullName()+" not has set up!");
+            }
+        }
     }
 
     public static void saveJSToFile() {

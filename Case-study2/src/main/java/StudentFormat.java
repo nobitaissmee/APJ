@@ -8,9 +8,9 @@ public class StudentFormat {
 
     public String getName(String message) {
         System.out.println(message);
-        System.out.println("The name cannot be numbered or too long");
+        System.out.println("The name cannot be numbered!");
         String firstName = sc.nextLine();
-        Pattern pattern = Pattern.compile("^([A-Za-z\\s]{0,255})");
+        Pattern pattern = Pattern.compile("^([\\PL\\PZ]{0,255})");
         Matcher matcher = pattern.matcher(firstName);
         return (matcher.matches()) ? getFormatName(firstName) : getName(message);
     }
@@ -21,8 +21,7 @@ public class StudentFormat {
         String formatName = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
         for (int i = 0; i < formatName.length() - 2; i++) {
             if (formatName.charAt(i) == ' ' && formatName.charAt(i + 1) != ' ') {
-                String newName = formatName.substring(0, i + 1) + formatName.substring(i + 1, i + 2).toUpperCase() + formatName.substring(i + 2);
-                formatName = newName;
+                formatName = formatName.substring(0, i + 1) + formatName.substring(i + 1, i + 2).toUpperCase() + formatName.substring(i + 2);
             }
         }
         return formatName;
@@ -70,8 +69,7 @@ public class StudentFormat {
     public String getNameEdit(String message) {
         System.out.println(message);
         try {
-            String nameEdit = sc.nextLine();
-            return nameEdit;
+            return sc.nextLine();
         } catch (Exception e) {
             System.out.println("There are no numbers or special characters!");
             return getNameEdit(message);

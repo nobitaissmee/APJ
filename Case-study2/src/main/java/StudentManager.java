@@ -13,6 +13,7 @@ public class StudentManager {
             "7. Edit Score\n" +
             "8. Edit All Score\n" +
             "9. Sort The List(Up To Down)\n" +
+            "10. Check All Point Of Student\n" +
             "0. Exit\n";
 
     String editMenu = "1. Edit Name\n" +
@@ -51,13 +52,13 @@ public class StudentManager {
     private boolean isRunningEditScore = false;
     private boolean isRunningInputAllScore = false;
     private boolean isRunningEditAllScore = false;
-    private Student studentPrivate = null;
-    private ArrayList<Student> studentListPrivate = new ArrayList<>();
+    public Student studentPrivate = null;
+    public ArrayList<Student> studentListPrivate = new ArrayList<>();
 
 
     public void printTotalMenu() {
         while (isRunningTotal) {
-            int optionTotalMenu = studentManagerScanner.getOptionMenu(totalMenu, 9, "----------Menu----------\n");
+            int optionTotalMenu = studentManagerScanner.getOptionMenu(totalMenu, 10, "----------Menu----------\n");
             handleGetTotalMenu(optionTotalMenu);
         }
     }
@@ -92,9 +93,8 @@ public class StudentManager {
                 studentListPrivate = studentScanner.getListToInputAllScore();
                 checkStudentPrivateAndPrintEditAllScoreMenu(studentListPrivate);
             }
-            case 9 -> {
-                studentScanner.handleSortList();
-            }
+            case 9 -> studentScanner.handleSortList();
+            case 10 -> studentScanner.checkPointAllStudent();
             case 0 -> isRunningTotal = false;
         }
     }
@@ -219,7 +219,7 @@ public class StudentManager {
             case 2 -> studentScanner.handleEditAllScore2(studentListPrivate);
             case 3 -> studentScanner.handleEditAllScore3(studentListPrivate);
             case 4 -> studentScanner.handleEditAllScore4(studentListPrivate);
-            case 0 -> isRunningInputAllScore = false;
+            case 0 -> isRunningEditAllScore = false;
         }
     }
 }

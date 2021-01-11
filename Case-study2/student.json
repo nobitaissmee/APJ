@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "fullName": "Phu Thinh",
+    "dayOfBirth": "2000-10-14",
+    "gender": "Male",
+    "point": {
+      "point1": 6.0,
+      "point2": -1.0,
+      "point3": -1.0,
+      "point4": -1.0
+    }
+  },
+  {
+    "id": 3,
+    "fullName": "Nguyen Hai",
+    "dayOfBirth": "2000-10-13",
+    "gender": "Male",
+    "point": {
+      "point1": 10.0,
+      "point2": -1.0,
+      "point3": -1.0,
+      "point4": -1.0
+    }
+  },
+  {
+    "id": 4,
+    "fullName": "Phuoc",
+    "dayOfBirth": "2000-10-12",
+    "gender": "Male",
+    "point": {
+      "point1": 9.0,
+      "point2": -1.0,
+      "point3": -1.0,
+      "point4": -1.0
+    }
+  }
+]

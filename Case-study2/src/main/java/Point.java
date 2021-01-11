@@ -1,16 +1,7 @@
 public class Point {
     private double point1 = -1, point2 = -1, point3 = -1, point4 = -1;
-    private double GPA;
 
     public Point() {
-    }
-
-    public Point(double point1, double point2, double point3, double point4) {
-        this.point1 = point1;
-        this.point2 = point2;
-        this.point3 = point3;
-        this.point4 = point4;
-        this.GPA = (point1 + point2 + point3 * 2 + point4 * 3) / 7;
     }
 
     public double getPoint1() {
@@ -46,17 +37,25 @@ public class Point {
     }
 
     public double getGPA() {
-        return (point1 + point2 + point3 * 2 + point4 * 3) / 7;
-    }
-
-    @Override
-    public String toString() {
-        return "Point{" +
-                "point1=" + point1 +
-                ", point2=" + point2 +
-                ", point3=" + point3 +
-                ", point4=" + point4 +
-                ", GPA=" + GPA +
-                '}';
+        boolean isRunning = false;
+        double sum = 0;
+        if (point1 != -1) {
+            sum += point1;
+            isRunning = true;
+        }
+        if (point2 != -1) {
+            sum += point2;
+            isRunning = true;
+        }
+        if (point3 != -1) {
+            sum += point3 * 2;
+            isRunning = true;
+        }
+        if (point4 != -1) {
+            sum += point4 * 3;
+            isRunning = true;
+        }
+        if (isRunning) return sum / 7;
+        return -1;
     }
 }
