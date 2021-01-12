@@ -1,21 +1,37 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CSVFile {
-
-//        File fileName=new File("data/").mkdirs();
+    private static final String CSV_SEPARATOR = ",";
 
     public void writeCVS(ArrayList<Contact> contactList,String fileName) {
-        try (PrintWriter fileWriter = new PrintWriter(fileName)) {
-            for (Contact contact : contactList) {
-                fileWriter.println(contact);
+        try
+        {
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8));
+            for (Contact contact : contactList)
+            {
+                String oneLine = contact.getPhoneNumber() +
+                        CSV_SEPARATOR +
+                        contact.getGroup() +
+                        CSV_SEPARATOR +
+                        contact.getFullName() +
+                        CSV_SEPARATOR +
+                        contact.getAddress() +
+                        CSV_SEPARATOR +
+                        contact.getGender() +
+                        CSV_SEPARATOR +
+                        contact.getDayOfBirth() +
+                        CSV_SEPARATOR +
+                        contact.getEmail();
+                bw.write(oneLine);
+                bw.newLine();
             }
-            System.out.println("Luu CVS thanh cong");
-        } catch (IOException e) {
-            System.out.println("Luu CVS that bai: " + e.getMessage());
-        }
+            bw.flush();
+            bw.close();
+        } catch (IOException ignored) {}
     }
 
     public List<Contact> readCVS(String fileName) {
@@ -42,6 +58,6 @@ public class CSVFile {
     }
 
     private static String parseField(String field) {
-        return field.substring(1, field.length() - 1);
+        return field.substring(0, field.length());
     }
 }
